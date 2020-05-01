@@ -22,6 +22,8 @@ fi
 MACHINENAME="demo"
 DISKSIZE="10000"
 RAMSIZE="1000"
+RED="y"
+START="n"
 while getopts "n:d:m:" opt; do
   echo "${opt} ${OPTARG}"
   case ${opt} in
@@ -34,6 +36,10 @@ while getopts "n:d:m:" opt; do
    m)
       RAMSIZE=${OPTARG}
       ;;
+#
+# En esta parte incluya el codigo para considerar las opciones
+# '-r' y '-s'.
+#
    ?)
       Ayuda "${0}"
       exit 1
@@ -63,6 +69,14 @@ VBoxManage createvm --name "${MACHINENAME}" --ostype "Debian_64" --register --ba
 #Set memory and network
 VBoxManage modifyvm "${MACHINENAME}" --ioapic on
 VBoxManage modifyvm "${MACHINENAME}" --memory ${RAMSIZE} --vram 128
+#
+# SU CODIGO AQUI
+#
+# Aqui usted debe considerar usar un condicional (if) de modo que si el valor de
+# la variable ${RED} es igual a "y" entonces se ejecuta la instruccion abajo.
+# De lo contrario, si el valor de ${RED} es "n", la interfaz de red no se crea.
+# Es decir, la linea abajo NO se ejecuta.
+#
 VBoxManage modifyvm "${MACHINENAME}" --nic1 nat
 #Create Disk and connect Debian Iso
 VBoxManage createhd --filename `pwd`/"${MACHINENAME}"/"${MACHINENAME}"_DISK.vdi --size ${DISKSIZE} --format VDI
@@ -77,5 +91,14 @@ VBoxManage modifyvm "${MACHINENAME}" --vrde on
 VBoxManage modifyvm "${MACHINENAME}" --vrdeaddress "0.0.0.0"
 VBoxManage modifyvm "${MACHINENAME}" --vrdemulticon on --vrdeport 10001
 
-#Start the VM
+#
+# SU CODIGO AQUI
+#
+# Aqui usted debe validar si el usuario paso o no el flag '-s'. Si el usuario al
+# momento de ejecutar el script NO PASO el flag '-s' entonces la maquina no se
+# inicia en su ejecucion. Es decir, esta ultima linea no se debe ejecutar. En 
+# caso contrario, si ha de ejecutar esta ultima linea.
+#
+# Start the VM
+#
 VBoxHeadless --startvm $MACHINENAME

@@ -1,5 +1,9 @@
 # Creando una máquina virtual desde CLI
 
+---
+> [TAREA](#tarea)
+---
+
 En este repositorio se va a crear una máquina virtual desde la línea de comandos usando el comando `VBoxManage`.
 Sin embargo, en lugar de correr los comandos uno tras otro, estos pasos se recopilan en un archivo plano, llamado script, para su posterior ejecución.
 
@@ -56,9 +60,36 @@ En esta nueva versión, el script se puede ejecutar de esta manera:
 
 Se creará entonces una máquina virtual llamada `demo1` con un disco duro de tamaño `10 Gbytes` y una RAM de `720` megabytes.
 
-### Referencias
+---
+
+## Tarea
+
+Dentro del script [crearvm.sh](crearvm.sh) hay dos instrucciones, línea 80:
+
+```
+VBoxManage modifyvm "${MACHINENAME}" --nic1 nat
+```
+
+y la última línea del script:
+
+```
+VBoxHeadless --startvm $MACHINENAME
+```
+
+que crean una interfaz de red y arrancan la ejecución de la máquina virtual, respectivamente.
+
+El script al momento recibe los siguientes *flags* `-n`, `-d`, `-m`; que permiten definir el nombre de la máquina, el tamaño en disco y la cantidad de RAM; asignada a la máquina virtual.
+Usted debe modificar el script de modo que el usuario pueda pasar dos nuevos *flags*:
+
+* `-r`: Si el usuario ejecuta el script de esta manera `./crearvm.sh -r n` entonces la máquina virtual  se creará sin interfaz de red. Es decir, la instrucción de la línea 80 **no se ejecuta**. Si el usuario digita `./crearvm.sh -r y` entonces se creará la interfaz de red. Esa es la opción por defecto, crear la interfaz de red. **IMPORTANTE** este *flag* espera recibir un caracter a su derecha o `n` o `y`. Si el usuario no invoca el *flag* `-r` entonces la interfaz de red se crea.
+* `-s`: Si el usuario ejecuta el script de esta manera `./crearvm.sh -s` entonces la máquina virtual, después de creada **se ejecutará**. Si el usuario ejecuta el script `./crearvm.sh -n demo` (observe no se pasó el flag `-s`) entonces la máquina virtual no se ejecutará una vez se termine de crear.
+
+---
+
+## Referencias
 
 A continuación un par de enlaces acerca de como parsear los argumentos que se le pasan a un script en Bash.
 
 * [Enlace 1](https://linuxconfig.org/how-to-use-getopts-to-parse-a-script-options)
 * [Enlace 1](https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/)
+
