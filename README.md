@@ -17,7 +17,28 @@ A continuación algunas de las objeciones que tiene el script de la rama `master
 
 ---
 
-Visite el *branch* llamado `iter01`.
+## Iteración 01
 
+En esta iteración se modifica el script `crearvm.sh` de modo que detenga su ejecución si el nombre de la máquina virtual no se provee al momento de lanzar la ejecución del script.
+[Aquí la nueva versión](crearvm.sh).
+
+Lo que se ha adicionado al código son las siguientes instrucciones:
+
+```
+if [ ${#} -ne 1 ]; then
+  echo "Uso: ${0} <nombre_vm>"
+  exit 1
+fi
+```
+
+Si el número de argumentos pasados al script (`${#}`) no es `1` entonces se muestra un mensaje por pantalla indicando la forma correcta de invocar el script.
+
+---
+
+Ahora se debe abordar el procesamiento de diferentes parámetros que caracterizan a una máquina virtual, tales como:
+
+* Nombre de la máquina
+* Tamaño de disco duro
+* Tamaño de memoria RAM
 
 

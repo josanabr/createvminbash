@@ -7,6 +7,11 @@
 # MODIFIED BY: John Sanabria - john.sanabria@correounivalle.edu.co
 # DATE: 2020-05-01
 #
+
+if [ ${#} -ne 1 ]; then
+  echo "Uso: ${0} <nombre_vm>"
+  exit 1
+fi
 MACHINENAME=$1
 
 # Download debian.iso
