@@ -56,4 +56,9 @@ En esta nueva versión, el script se puede ejecutar de esta manera:
 
 Se creará entonces una máquina virtual llamada `demo1` con un disco duro de tamaño `10 Gbytes` y una RAM de `720` megabytes.
 
+### Referencias
 
+A continuación un par de enlaces acerca de como parsear los argumentos que se le pasan a un script en Bash.
+
+* [Enlace 1](https://linuxconfig.org/how-to-use-getopts-to-parse-a-script-options)
+* [Enlace 1](https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/)
