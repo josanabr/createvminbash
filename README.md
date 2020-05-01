@@ -17,8 +17,7 @@ A continuación algunas de las objeciones que tiene el script de la rama `master
 
 ---
 
-## Iteración 01
-
+Visite el *branch* llamado `iter01`.
 
 
 
