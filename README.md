@@ -79,7 +79,8 @@ VBoxHeadless --startvm $MACHINENAME
 que crean una interfaz de red y arrancan la ejecución de la máquina virtual, respectivamente.
 
 El script al momento recibe los siguientes *flags* `-n`, `-d`, `-m`; que permiten definir el nombre de la máquina, el tamaño en disco y la cantidad de RAM; asignada a la máquina virtual.
-Usted debe modificar el script de modo que el usuario pueda pasar dos nuevos *flags*:
+
+**Su tarea** modificar el script de modo que el usuario pueda pasar dos nuevos *flags*:
 
 * `-r`: Si el usuario ejecuta el script de esta manera `./crearvm.sh -r n` entonces la máquina virtual  se creará sin interfaz de red. Es decir, la instrucción de la línea 80 **no se ejecuta**. Si el usuario digita `./crearvm.sh -r y` entonces se creará la interfaz de red. Esa es la opción por defecto, crear la interfaz de red. **IMPORTANTE** este *flag* espera recibir un caracter a su derecha o `n` o `y`. Si el usuario no invoca el *flag* `-r` entonces la interfaz de red se crea.
 * `-s`: Si el usuario ejecuta el script de esta manera `./crearvm.sh -s` entonces la máquina virtual, después de creada **se ejecutará**. Si el usuario ejecuta el script `./crearvm.sh -n demo` (observe no se pasó el flag `-s`) entonces la máquina virtual no se ejecutará una vez se termine de crear.
