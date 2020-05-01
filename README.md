@@ -41,4 +41,19 @@ Ahora se debe abordar el procesamiento de diferentes parámetros que caracteriza
 * Tamaño de disco duro
 * Tamaño de memoria RAM
 
+---
+
+## Iteración 02
+
+El script presentado hasta el momento daba ninguna flexibilidad a la hora de fácilmente cambiar algunos parámetros de la máquina virtual.
+Si se deseaba cambiar el tamaño del disco duro o si se quería cambiar el tamaño de la memoria RAM entonces se debía editar el script `crearvm.sh` en las líneas que corresponden y poner los valores deseados.
+
+En esta nueva versión, el script se puede ejecutar de esta manera:
+
+```
+./crearvm.sh -n demo1 -d 10 -m 720
+```
+
+Se creará entonces una máquina virtual llamada `demo1` con un disco duro de tamaño `10 Gbytes` y una RAM de `720` megabytes.
+
 
